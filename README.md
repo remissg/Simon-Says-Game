@@ -7,7 +7,8 @@
 ![Stars](https://img.shields.io/github/stars/remissg/Simon-Says-Game?style=social)
 ![Forks](https://img.shields.io/github/forks/remissg/Simon-Says-Game?style=social)
 
-https://github.com/remissg/Simon-Says-Game/blob/main/Game%20Preview.png
+<img width="2718" height="1506" alt="Screenshot 2025-09-26 231617" src="https://github.com/user-attachments/assets/4863d40c-b966-4c94-9a6c-67a6ab48e07b" />
+
 _A preview of the Simon Says Game interface._
 
 ---
