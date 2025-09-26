@@ -74,8 +74,11 @@ Playing the Simon Says Game is straightforward:
 4.  **Advance Rounds:** If you repeat the sequence correctly, Simon will add another color to the sequence, and the game will continue.
 5.  **Game Over:** If you make a mistake, the game will end, and your score will be displayed. You can then restart to try and beat your high score!
 
-_A screenshot of the game in action, showing a sequence being played._
-![Gameplay Screenshot](https://github.com/remissg/Simon-Says-Game/blob/main/usage_screenshot_placeholder.png)
+_A screenrecording of the game in action, showing a sequence being played._
+
+
+https://github.com/user-attachments/assets/7ec182e8-c648-4c74-93b3-602dc28139e6
+
 
 
 ## 🗺️ Project Roadmap
