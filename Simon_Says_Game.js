@@ -9,17 +9,42 @@ let highestScore = 0; // Add this line
 
 let h2 = document.querySelector("h2");
 
-document.addEventListener("keypress" , function(){
-    if(started == false){
+// Audio setup
+const audioMap = {
+    red: new Audio("sounds/red.mp3"),
+    green: new Audio("sounds/green.mp3"),
+    yellow: new Audio("sounds/yellow.mp3"),
+    blue: new Audio("sounds/blue.mp3"),
+    gameover: new Audio("sounds/gameover.mp3"),
+    start: new Audio("sounds/start.mp3") 
+};
+
+function playSound(color) {
+    if (audioMap[color]) {
+        audioMap[color].currentTime = 0;
+        audioMap[color].play();
+    }
+}
+
+document.addEventListener("keypress", function () {
+    if (started == false) {
+        h2.innerText = "Game is starting..."; // Show message while start music plays
+        playSound("start"); // Play start audio
         console.log("game is started");
         started = true;
 
-        levelUp();
+        // Wait for start audio to finish before starting the game
+        audioMap.start.onended = function () {
+            levelUp();
+            // Remove the handler so it doesn't trigger again
+            audioMap.start.onended = null;
+        };
     }
 })
 
 function gameFlash(btn){
     btn.classList.add("flash");
+    playSound(btn.getAttribute("id"));
     setTimeout(function(){
         btn.classList.remove("flash");
     }, 250);
@@ -27,6 +52,7 @@ function gameFlash(btn){
 
 function userFlash(btn){
     btn.classList.add("flash");
+    playSound(btn.getAttribute("id"));
     setTimeout(function(){
         btn.classList.remove("flash");
     }, 250);
@@ -57,6 +83,7 @@ function checkAns (idx){
         if(level > highestScore){
             highestScore = level;
         }
+        playSound("gameover"); // Play game over sound
         h2.innerHTML = `Game Over! Your score is <b>${level}</b> <br>Highest Score: <b>${highestScore}</b><br>Press any key to start.`;
         document.querySelector("body").style.backgroundColor = "red";
         setTimeout(function(){
