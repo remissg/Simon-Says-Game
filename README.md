@@ -7,7 +7,7 @@
 ![Stars](https://img.shields.io/github/stars/remissg/Simon-Says-Game?style=social)
 ![Forks](https://img.shields.io/github/forks/remissg/Simon-Says-Game?style=social)
 
-**🔗 [Live Demo](https://symonsaysgame.edgeone.app/)**
+**🔗 [Live Demo](https://remissg.github.io/Simon-Says-Game/)**
 <img width="2718" height="1506" alt="Screenshot 2025-09-26 231617" src="https://github.com/user-attachments/assets/15a09c66-951e-424d-a9ec-13651f79a6e5" />
 
 _A preview on Desktop screen of the Simon Says Game interface._
