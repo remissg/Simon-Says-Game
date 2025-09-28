@@ -1,15 +1,16 @@
 let gameSeq = [];
 let userSeq = [];
 
-let btns = ["red" , "green" , "yellow" ,  "blue"];
+let btns = ["red" , "green" , "yellow" , "blue"];
 
 let started = false;
 let level = 0;
-let highestScore = 0; // Add this line
+let highestScore = 0; 
 
 let h2 = document.querySelector("h2");
+let startButton = document.querySelector("#startButton"); // Get the new button
 
-// Audio setup
+
 const audioMap = {
     red: new Audio("sounds/red.mp3"),
     green: new Audio("sounds/green.mp3"),
@@ -25,6 +26,26 @@ function playSound(color) {
         audioMap[color].play();
     }
 }
+
+
+
+
+// *** Event Listener for Start Button Click ***
+startButton.addEventListener("click", function startGame() {
+    if (started == false) {
+        h2.innerText = "Game is starting..."; 
+        playSound("start"); 
+        console.log("game is started");
+        started = true;
+        startButton.classList.add("hide"); // Hide the start button
+
+        // Wait for start audio to finish before starting the game
+        audioMap.start.onended = function () {
+            levelUp();
+            audioMap.start.onended = null;
+        };
+    }
+});
 
 document.addEventListener("keypress", function () {
     if (started == false) {
@@ -60,13 +81,16 @@ function userFlash(btn){
 
 function levelUp(){
     userSeq = [];
-    level ++;
-    h2.innerText = `Level ${level}`; // Show highest score
+    level++;
+
+    // Display level and highest score in the h2
+    h2.innerHTML = `Level ${level} `; 
 
     // random btn choose
-    let randIdx =  Math.floor(Math.random() * 4);
+    let randIdx = Math.floor(Math.random() * 4);
     let randColor = btns[randIdx];
-    let randBtn = document.querySelector(`.${randColor}`);
+    // Use the class selector for the button
+    let randBtn = document.querySelector(`.${randColor}`); 
     gameSeq.push(randColor);
     console.log(gameSeq);
     gameFlash(randBtn);
@@ -79,23 +103,30 @@ function checkAns (idx){
         }
     }
     else{
-        // Update highest score if current level is greater
+        // Update highest score if current level is greater than the recorded highest score
         if(level > highestScore){
-            highestScore = level;
+            highestScore = level - 1; 
+        } else if (level === 1) {
+             highestScore = Math.max(highestScore, 0); 
         }
-        playSound("gameover"); // Play game over sound
-        h2.innerHTML = `Game Over! Your score is <b>${level}</b> <br>Highest Score: <b>${highestScore}</b><br>Press any key to start.`;
+        
+        playSound("gameover"); 
+        // Display Game Over message with current score and highest score
+        h2.innerHTML = `Game Over! Your score is <b>${level - 1}</b>.<br> Highest: <b>${highestScore}</b>.<br>Press the START button to play again.`;
+        
         document.querySelector("body").style.backgroundColor = "red";
         setTimeout(function(){
             document.querySelector("body").style.backgroundColor = "white";
         }, 150);
+        
         reset();
     }
 }
 
 function btnPress(){
+    if (!started) return; // Ignore button presses if the game hasn't started
+    
     let btn = this;
-    // console.log(this);
     userFlash(btn);
     
     userColor = btn.getAttribute("id");
@@ -107,7 +138,7 @@ function btnPress(){
 
 let allBtns = document.querySelectorAll(".btn");
 
-for (btn of allBtns){
+for (let btn of allBtns){ // Use 'let' for block scoping
     btn.addEventListener("click" , btnPress);
 }
 
@@ -116,4 +147,44 @@ function reset(){
     gameSeq = [];
     userSeq = [];
     level = 0;
+    startButton.classList.remove("hide"); // Show the start button again
+
 }
+
+
+function setupForScreenSize() {
+    if (window.innerWidth <= 1025) {
+        // Mobile: Show Start button, hide keypress, set h2
+        h2.innerText = "Press Start to Start the Game";
+        startButton.classList.remove("hide");
+        document.removeEventListener("keypress", keypressStartHandler);
+    } else {
+        // Laptop/Desktop: Hide Start button, enable keypress, set h2
+        h2.innerText = "Press any key to start the game";
+        startButton.classList.add("hide");
+        document.addEventListener("keypress", keypressStartHandler);
+    }
+}
+
+// Extract keypress handler so it can be added/removed
+function keypressStartHandler() {
+    if (started == false) {
+        h2.innerText = "Game is starting...";
+        playSound("start");
+        started = true;
+        audioMap.start.onended = function () {
+            levelUp();
+            audioMap.start.onended = null;
+        };
+    }
+}
+
+// Remove the old keypress event listener (if any)
+document.removeEventListener("keypress", keypressStartHandler);
+
+// Initial setup
+setupForScreenSize();
+
+// Re-setup on window resize
+window.addEventListener("resize", setupForScreenSize);
+window.addEventListener("orientationchange", setupForScreenSize);
