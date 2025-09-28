@@ -147,8 +147,12 @@ function reset(){
     gameSeq = [];
     userSeq = [];
     level = 0;
-    startButton.classList.remove("hide"); // Show the start button again
-
+    // Only show the start button if on mobile (screen width <= 1025)
+    if (window.innerWidth <= 1025) {
+        startButton.classList.remove("hide");
+    } else {
+        startButton.classList.add("hide");
+    }
 }
 
 
