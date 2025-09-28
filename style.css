@@ -1,0 +1,83 @@
+body {
+    text-align: center;
+}
+
+.btn {
+    height: 200px;
+    width: 200px;
+    border: 7px solid black;
+    border-radius: 20%;
+    margin: 2rem;
+}
+
+.btn_container {
+    display: flex;
+    justify-content: center;
+}
+
+.red {
+    background-color: #dc2828;
+}
+
+.green {
+    background-color: #0dea28;
+}
+
+.yellow {
+    background-color: #f7e703;
+}
+
+.blue {
+    background-color: #03b1f6;
+}
+
+.flash {
+    background-color: white;
+}
+
+#startButton {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #5bc0de; 
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px #3a97b2;
+    margin-top: 20px;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+#startButton:hover {
+    background-color: #46b8da;
+}
+
+#startButton:active {
+    background-color: #3a97b2;
+    box-shadow: 0 2px #3a97b2;
+    transform: translateY(3px);
+}
+
+/* Style for when the game is already started (button hidden) */
+#startButton.hide {
+    display: none;
+}
+
+@media (max-width: 37.5rem) { 
+    .btn {
+        height: 8.5rem;  
+        width: 8.5rem;   
+        border-width: 0.4rem;   
+        margin: 1rem;          
+    }
+}
+
+@media (max-width: 23rem) { 
+    .btn {
+        height: 6.5rem;  
+        width: 6.5rem;   
+        border-width: 0.4rem;   
+        margin: 1rem;          
+    }
+}
