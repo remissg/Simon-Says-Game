@@ -7,11 +7,15 @@
 ![Stars](https://img.shields.io/github/stars/remissg/Simon-Says-Game?style=social)
 ![Forks](https://img.shields.io/github/forks/remissg/Simon-Says-Game?style=social)
 
-**🔗 [Live Demo](https://symonsaysgame.edgeone.app/)**
+**🔗 [Live Demo](https://remissg.github.io/Simon-Says-Game/)**
+<img width="2718" height="1506" alt="Screenshot 2025-09-26 231617" src="https://github.com/user-attachments/assets/15a09c66-951e-424d-a9ec-13651f79a6e5" />
 
-<img width="2718" height="1506" alt="Screenshot 2025-09-26 231617" src="https://github.com/user-attachments/assets/4863d40c-b966-4c94-9a6c-67a6ab48e07b" />
+_A preview on Desktop screen of the Simon Says Game interface._
 
-_A preview of the Simon Says Game interface._
+---
+<img width="794" height="861" alt="Screenshot 2025-09-28 124204" src="https://github.com/user-attachments/assets/4618f948-741a-4c7d-9456-36a719caf81e" />
+
+_A preview on mobile screen of the Simon Says Game interface._
 
 ---
 
@@ -79,7 +83,11 @@ Playing the Simon Says Game is straightforward:
 _A screenrecording of the game in action, showing a sequence being played._
 
 
-https://github.com/user-attachments/assets/7ec182e8-c648-4c74-93b3-602dc28139e6
+https://github.com/user-attachments/assets/d1f9256b-1779-440d-91f1-76ed2815fe3b
+
+
+
+
 
 
 
